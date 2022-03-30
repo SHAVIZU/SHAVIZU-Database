@@ -1,12 +1,13 @@
-create database shavizu;
+CREATE DATABASE shavizu;
 
-DROP TABLE IF EXISTS `tbl_shop`;
-DROP TABLE IF EXISTS `tbl_shop_information`;
-DROP TABLE IF EXISTS `tbl_item`;
-DROP TABLE IF EXISTS `tbl_item_size`;
-DROP TABLE IF EXISTS `tbl_sell`;
-DROP TABLE IF EXISTS `tbl_inventory`;
 DROP TABLE IF EXISTS `tbl_shop_image`;
+DROP TABLE IF EXISTS `tbl_inventory`;
+DROP TABLE IF EXISTS `tbl_sell`;
+DROP TABLE IF EXISTS `tbl_item_size`;
+DROP TABLE IF EXISTS `tbl_item`;
+DROP TABLE IF EXISTS `tbl_shop_information`;
+DROP TABLE IF EXISTS `tbl_brand`;
+DROP TABLE IF EXISTS `tbl_shop`;
 
 CREATE TABLE `tbl_shop` (
 	`id`	VARCHAR(12)	NOT NULL,
@@ -28,14 +29,21 @@ CREATE TABLE `tbl_shop_information` (
     FOREIGN KEY (`id`) REFERENCES `tbl_shop` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `tbl_brand` (
+	`id`	BIGINT	NOT NULL,
+	`name`	VARCHAR(30)	NOT NULL,
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `tbl_item` (
 	`id`	BIGINT	NOT NULL AUTO_INCREMENT,
 	`name`	VARCHAR(50)	NOT NULL,
-	`brand`	VARCHAR(30)	NOT NULL,
+	`brand_id`	BIGINT	NOT NULL,
 	`style_code`	VARCHAR(20)	NOT NULL,
 	`category`	VARCHAR(10)	NOT NULL,
 	`image_url`	VARCHAR(255)	NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `tbl_item_size` (
