@@ -11,9 +11,9 @@ DROP TABLE IF EXISTS `tbl_shop`;
 
 CREATE TABLE `tbl_shop` (
 	`id`	BIGINT	NOT NULL,
-    `user_id` VARCHAR(12) NOT NULL UNIQUE,
+   	`user_id` VARCHAR(12) NOT NULL UNIQUE,
 	`password`	CHAR(60)	NOT NULL,
-    `name` VARCHAR(45) NOT NULL,
+    	`name` VARCHAR(45) NOT NULL,
 	`created_at`	DATETIME	NOT NULL,
 	`registration_number`	VARCHAR(12)	NOT NULL UNIQUE,
 	`boss_name`	VARCHAR(10)	NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `tbl_inventory` (
 
 CREATE TABLE `tbl_shop_image` (
 	`id`	BIGINT NOT NULL,
-    `shop_id` BIGINT NOT NULL,
+    	`shop_id` BIGINT NOT NULL,
 	`image_url`	VARCHAR(255)	NOT NULL,
 	`is_representative`	BIT	NOT NULL,
     PRIMARY KEY (`id`),
