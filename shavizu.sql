@@ -1,4 +1,4 @@
-CREATE DATABASE shavizu;
+create database shavizu;
 
 DROP TABLE IF EXISTS `tbl_shop_image`;
 DROP TABLE IF EXISTS `tbl_inventory`;
@@ -10,17 +10,18 @@ DROP TABLE IF EXISTS `tbl_brand`;
 DROP TABLE IF EXISTS `tbl_shop`;
 
 CREATE TABLE `tbl_shop` (
-	`id`	VARCHAR(12)	NOT NULL,
+	`id`	BIGINT	NOT NULL,
+    `user_id` VARCHAR(12) NOT NULL UNIQUE,
 	`password`	CHAR(60)	NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
 	`created_at`	DATETIME	NOT NULL,
-	`registration_number`	VARCHAR(12)	NOT NULL,
+	`registration_number`	VARCHAR(12)	NOT NULL UNIQUE,
 	`boss_name`	VARCHAR(10)	NOT NULL,
-	`opening_date`	DATETIME	NOT NULL,
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `tbl_shop_information` (
-	`id`	VARCHAR(12)	NOT NULL,
+	`id`	BIGINT	NOT NULL,
 	`telephone`	VARCHAR(11)	NOT NULL,
 	`address`	VARCHAR(100)	NOT NULL,
 	`opening_hours`	VARCHAR(200)	NOT NULL,
@@ -55,7 +56,7 @@ CREATE TABLE `tbl_item_size` (
 
 CREATE TABLE `tbl_sell` (
 	`id`	BIGINT	NOT NULL AUTO_INCREMENT,
-	`shop_id`	VARCHAR(12)	NOT NULL,
+	`shop_id`	BIGINT	NOT NULL,
 	`item_id`	BIGINT	NOT NULL,
 	`price`	INTEGER	NOT NULL,
 	`discount_rate`	TINYINT	NULL,
@@ -75,7 +76,8 @@ CREATE TABLE `tbl_inventory` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `tbl_shop_image` (
-	`id`	VARCHAR(12) NOT NULL,
+	`id`	BIGINT NOT NULL,
+    `shop_id` BIGINT NOT NULL,
 	`image_url`	VARCHAR(255)	NOT NULL,
 	`is_representative`	BIT	NOT NULL,
     PRIMARY KEY (`id`),
