@@ -32,7 +32,7 @@ CREATE TABLE `tbl_shop_information` (
 
 CREATE TABLE `tbl_brand` (
 	`id`	BIGINT	NOT NULL,
-	`name`	VARCHAR(30)	NOT NULL,
+	`name`	VARCHAR(30)	NOT NULL UNIQUE,
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_item` (
 	`id`	BIGINT	NOT NULL AUTO_INCREMENT,
 	`name`	VARCHAR(50)	NOT NULL,
 	`brand_id`	BIGINT	NOT NULL,
-	`style_code`	VARCHAR(20)	NOT NULL,
+	`style_code`	VARCHAR(20)	NOT NULL UNIQUE,
 	`category`	VARCHAR(10)	NOT NULL,
 	`image_url`	VARCHAR(255)	NOT NULL,
     PRIMARY KEY (`id`),
@@ -83,3 +83,6 @@ CREATE TABLE `tbl_shop_image` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id`) REFERENCES `tbl_shop` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE `tbl_item_size` ADD UNIQUE (`item_id`, `size`);
+ALTER TABLE `tbl_sell` ADD UNIQUE (`shop_id`, `item_id`);
