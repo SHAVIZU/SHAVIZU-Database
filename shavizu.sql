@@ -68,11 +68,11 @@ CREATE TABLE `tbl_sell` (
 
 CREATE TABLE `tbl_inventory` (
 	`sell_id`	BIGINT	NOT NULL,
-	`item_id`	BIGINT	NOT NULL,
+	`item_size_id`	BIGINT	NOT NULL,
 	`amount`	BIGINT	NOT NULL,
     PRIMARY KEY (`sell_id`, `item_id`),
     FOREIGN KEY (`sell_id`) REFERENCES `tbl_sell` (`id`),
-    FOREIGN KEY (`item_id`) REFERENCES `tbl_item_size` (`id`)
+    FOREIGN KEY (`item_size_id`) REFERENCES `tbl_item_size` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `tbl_shop_image` (
