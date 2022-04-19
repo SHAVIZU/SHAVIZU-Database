@@ -79,7 +79,7 @@ CREATE TABLE `tbl_shop_image` (
 	`id`	BIGINT NOT NULL,
     	`shop_id` BIGINT NOT NULL,
 	`image_url`	VARCHAR(255)	NOT NULL,
-	`is_representative`	BIT	NOT NULL,
+	`sequence`	INT	NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id`) REFERENCES `tbl_shop` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
