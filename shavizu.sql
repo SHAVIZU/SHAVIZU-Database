@@ -17,6 +17,7 @@ CREATE TABLE `tbl_shop` (
 	`created_at`	DATETIME	NOT NULL,
 	`registration_number`	VARCHAR(12)	NOT NULL UNIQUE,
 	`boss_name`	VARCHAR(10)	NOT NULL,
+	`opening_date`  DATE  NOT NULL,
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
